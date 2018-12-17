@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Models</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">Models</h1>
+
+<h2 id="toc_1">Models</h2>
+
+<p><code>models.py</code>はアプリケーション内で用いられるデータを定義しているものです．以下の3つからなります．</p>
+
+<ul>
+<li>Subsession</li>
+<li>Group</li>
+<li>Player</li>
+</ul>
+
+<p>1人のPlayerはグループの構成要員であり，subsessionの一部です．詳細は&quot;Conceptual overview&quot;でご確認ください．</p>
+
+<h2 id="toc_2">Model fields</h2>
+
+<p><code>models.py</code>の主な定義は，データベース上における列を定義するものです．以下のような表を作ってみましょう．</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">name</th>
+<th style="text-align: right">age</th>
+<th style="text-align: center">is_student</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">John</td>
+<td style="text-align: right">30</td>
+<td style="text-align: center">False</td>
+</tr>
+<tr>
+<td style="text-align: left">Alice</td>
+<td style="text-align: right">22</td>
+<td style="text-align: center">True</td>
+</tr>
+<tr>
+<td style="text-align: left">Bob</td>
+<td style="text-align: right">35</td>
+<td style="text-align: center">False</td>
+</tr>
+<tr>
+<td style="text-align: left">&hellip;</td>
+<td style="text-align: right"></td>
+<td style="text-align: center"></td>
+</tr>
+</tbody>
+</table>
+
+<p>このようなテーブル構造は，以下のように定義することができます．</p>
+
+<div><pre><code class="language-none">class Player(BasePlayer):
+    ...
+    name = models.CharField()
+    age = models.PositiveIntegerField()
+    is_student = models.BooleanField()</code></pre></div>
+
+<p><code>otree resetdb</code>を実行した時，<code>models.py</code>を分析して，その通りにデータベーステーブルを作成します．（だから，<code>models.py</code>に追加したり，削除したり，項目に変更を加えた際に<code>resetdb</code>を実行する必要があります．）</p>
+
+<p>利用可能な<code>fields</code>のリストはDjangoドキュメンテーションの<a href="https://docs.djangoproject.com/ja/1.9/ref/models/fields/">ココ</a>にあります．最もよく使われるのは<code>CharField</code>/<code>TextField</code>（文字列），<code>FloatField</code>（実数），<code>BooleanField</code>（真偽値），<code>IntegerField</code>と<code>PositiveIntegerField</code>です．<code>FloatField</code>と<code>DecimalField</code>の違いを十分に理解しない限り，そして使う必要がない限りは使わないようにしてください．</p>
+
+<p>さらに，oTreeは<code>CurrencyField</code>があります．詳細は<a href="http://otree.readthedocs.io/en/latest/currency.html#currency">お金と利得</a>を御覧ください．</p>
+
+<h3 id="toc_3">Settng a field&rsquo;s initial/default value</h3>
+
+<p>あなたが定義したどんなフィールドも，初期値は<code>None</code>であり，何も定義されていません．もし，何らかの初期値を定義したいのであれば，<code>initial =</code>を使ってください．</p>
+
+<div><pre><code class="language-none">class Player(BasePlayer):
+    some_number = models.IntegerField(initial=0)</code></pre></div>
+
+<h3 id="toc_4">min, max. choices</h3>
+
+<p><code>min</code>（最小値），<code>max</code>（最大値）や<code>choices</code>（選択肢）を設定したいのであれば，<a href="http://otree.readthedocs.io/en/latest/forms.html#form-validation">コチラ</a>をごらんください．</p>
+
+<h2 id="toc_5">Constants</h2>
+
+<p><code>Constants</code>クラスは，プレイヤーに共通するアプリケーションのパラメータと定数を設定するのに適したものです．</p>
+
+<p>以下がアプリケーションに必要となる定数です．</p>
+
+<ul>
+<li><code>name_in_url</code>：この名前は実験参加者のURLにおいて，アプリケーションを特定するために用いられます．例えば，<code>public_goods</code>を設定したのであれば，実験参加者のURLは以下のようになります．<code>http://otree-demo.herokuapp.com/p/zuzepona/public_goods/Introduction/1/</code></li>
+<li><code>players_per_group</code>：(Groupsの欄で述べます．)</li>
+<li><code>num_rounds</code>：(Roundsの欄で述べます．)</li>
+</ul>
+
+<h2 id="toc_6">Subsession</h2>
+
+<p>以下には，<code>Subsession</code>オブジェクトの属性とメソッドのリストを示します．</p>
+
+<h3 id="toc_7">session</h3>
+
+<p><code>session</code>の中には<code>subsession</code>があります．詳細は&quot;Self&quot;に関する説明を確認してください．</p>
+
+<h3 id="toc_8">round_number</h3>
+
+<p>現在のラウンド数を表示します．ただし，これは複数ラウンド実施するゲーム実験のみに関係します．(Constants.num_roundsで定義されます．）詳細は&quot;Rounds&quot;に関する説明を確認してください．</p>
+
+<h3 id="toc_9">before_session_starts</h3>
+
+<p><code>before_session_starts</code>は<a href="http://otree.readthedocs.io/en/latest/models.html#creating-session"><code>creating_session</code></a>からotree-core1.3.2(June 2017)より変更したものです．しかしながら，<code>before_session_starts</code>も下位互換性を保つために，現在でも利用可能です．</p>
+
+<h3 id="toc_10">creating_session</h3>
+
+<blockquote>
+<p>このメソッドは<code>before_session_starts</code>と呼ばれていたものです．詳細はそちらをご確認ください．</p>
+</blockquote>
+
+<p>このメソッドは管理者が&quot;create session&quot;をクリックした際に実行されます．</p>
+
+<p><code>creating_session</code>は<code>player</code>，<code>Groups</code>，<code>subsessions</code>などのフィールドを初期値に戻すものです．例は以下のとおりです．</p>
+
+<div><pre><code class="language-none">class Subsession(BaseSubsession):
+
+def creating_session(self):
+    for p in self.get_players():
+        p.some_field = some_value</code></pre></div>
+
+<p>詳細ない情報は<a href="http://otree.readthedocs.io/en/latest/treatments.html#treatments">treatments</a>と<a href="http://otree.readthedocs.io/en/latest/multiplayer/groups.html#shuffling">group shuffling</a>にあります．</p>
+
+<p>もし，アプリケーションが1ラウンドだけであれば，<code>creating_session</code>は一度だけ実行されます．もし，アプリケーションがNラウンドあれば，N回実行されます．すなわち，各subsessionに1つずつ必要となるのです．</p>
+
+<blockquote>
+<p>この方法は各ラウンドの始まりには実行されます．そのために，ページの進行を止めるためには<a href="http://otree.readthedocs.io/en/latest/multiplayer/waitpages.html#after-all-players-arrive"><code>after_all_players_arrive()</code></a>を使ってください．</p>
+</blockquote>
+
+<h3 id="toc_11">group_randomly()</h3>
+
+<p><a href="http://otree.readthedocs.io/en/latest/multiplayer/groups.html#shuffling">Group matching</a>を確認してください．</p>
+
+<h3 id="toc_12">group_like_round()</h3>
+
+<p><a href="http://otree.readthedocs.io/en/latest/multiplayer/groups.html#shuffling">Group matching</a>を確認してください．</p>
+
+<h3 id="toc_13">get_group_matrix()</h3>
+
+<p><a href="http://otree.readthedocs.io/en/latest/multiplayer/groups.html#shuffling">Group matching</a>を確認してください．</p>
+
+<h3 id="toc_14">get_groups()</h3>
+
+<p>subsessionにおける全てのグループのリストを返します．</p>
+
+<h3 id="toc_15">get_players()</h3>
+
+<p>subsessionにおける全てのプレイヤーのリストを返します．</p>
+
+<h3 id="toc_16">in_previous_rounds()</h3>
+
+<p>詳細は<a href="http://otree.readthedocs.io/en/latest/rounds.html#in-rounds">Passing data between rounds or apps</a>を確認してください．</p>
+
+<h3 id="toc_17">in_all_rounds()</h3>
+
+<p>詳細は<a href="http://otree.readthedocs.io/en/latest/rounds.html#in-rounds">Passing data between rounds or apps</a>を確認してください．</p>
+
+<h3 id="toc_18">in_round(round_number)</h3>
+
+<p>詳細は<a href="http://otree.readthedocs.io/en/latest/rounds.html#in-rounds">Passing data between rounds or apps</a>を確認してください．</p>
+
+<h3 id="toc_19">in_rounds(self, first, last)</h3>
+
+<p>詳細は<a href="http://otree.readthedocs.io/en/latest/rounds.html#in-rounds">Passing data between rounds or apps</a>を確認してください．</p>
+
+<h2 id="toc_20">Group</h2>
+
+<p>以下には，<code>Group</code>オブジェクトの属性とメソッドのリストを示します．</p>
+
+<h3 id="toc_21">sessions/subsession</h3>
+
+<p><code>session</code>の中には<code>subsession</code>があります．詳細は&quot;Self&quot;に関する説明を確認してください．</p>
+
+<h3 id="toc_22">get_players()</h3>
+
+<p><a href="http://otree.readthedocs.io/en/latest/multiplayer/groups.html">Groups</a>を確認してください．</p>
+
+<h3 id="toc_23">get_player_by_role(role)</h3>
+
+<p><a href="http://otree.readthedocs.io/en/latest/multiplayer/groups.html">Groups</a>を確認してください．</p>
+
+<h3 id="toc_24">get_player_by_id(id_in_group)</h3>
+
+<p><a href="http://otree.readthedocs.io/en/latest/multiplayer/groups.html">Groups</a>を確認してください．</p>
+
+<h3 id="toc_25">set_players(players_list)</h3>
+
+<p><a href="http://otree.readthedocs.io/en/latest/multiplayer/groups.html#shuffling">Group matching</a>を確認してください．</p>
+
+<h3 id="toc_26">in_previous_rounds()</h3>
+
+<p>詳細は<a href="http://otree.readthedocs.io/en/latest/rounds.html#in-rounds">Passing data between rounds or apps</a>を確認してください．</p>
+
+<h3 id="toc_27">in_all_rounds()</h3>
+
+<p>詳細は<a href="http://otree.readthedocs.io/en/latest/rounds.html#in-rounds">Passing data between rounds or apps</a>を確認してください．</p>
+
+<h3 id="toc_28">in_round(round_number)</h3>
+
+<p>詳細は<a href="http://otree.readthedocs.io/en/latest/rounds.html#in-rounds">Passing data between rounds or apps</a>を確認してください．</p>
+
+<h3 id="toc_29">in_rounds(self, first, last)</h3>
+
+<p>詳細は<a href="http://otree.readthedocs.io/en/latest/rounds.html#in-rounds">Passing data between rounds or apps</a>を確認してください．</p>
+
+<h2 id="toc_30">Player</h2>
+
+<p>以下には，<code>Player</code>オブジェクトの属性とメソッドのリストを示します．</p>
+
+<h3 id="toc_31">id_in_group</h3>
+
+<p>整数であり，1から始まります．複数人ゲームの場合，この数値はプレイヤー1に割り振られているのか，プレイヤー2に割り振られているのかなどを示します．</p>
+
+<h3 id="toc_32">payoff</h3>
+
+<p>プレイヤーのそのラウンドにおける利得を示します．詳細は<a href="http://otree.readthedocs.io/en/latest/currency.html#payoff">payoffs</a>を確認してください．</p>
+
+<h3 id="toc_33">session/subsession/group/participant</h3>
+
+<h3 id="toc_34">get_others_in_group()</h3>
+
+<p><a href="http://otree.readthedocs.io/en/latest/multiplayer/groups.html">Groups</a>を確認してください．</p>
+
+<h3 id="toc_35">get_others_in_subsession()</h3>
+
+<p><a href="http://otree.readthedocs.io/en/latest/multiplayer/groups.html">Groups</a>を確認してください．</p>
+
+<h3 id="toc_36">role()</h3>
+
+<h3 id="toc_37">in_previous_rounds()</h3>
+
+<p>詳細は<a href="http://otree.readthedocs.io/en/latest/rounds.html#in-rounds">Passing data between rounds or apps</a>を確認してください．</p>
+
+<h3 id="toc_38">in_all_rounds()</h3>
+
+<p>詳細は<a href="http://otree.readthedocs.io/en/latest/rounds.html#in-rounds">Passing data between rounds or apps</a>を確認してください．</p>
+
+<h3 id="toc_39">in_round(round_number)</h3>
+
+<p>詳細は<a href="http://otree.readthedocs.io/en/latest/rounds.html#in-rounds">Passing data between rounds or apps</a>を確認してください．</p>
+
+<h3 id="toc_40">in_rounds(self, first, last)</h3>
+
+<p>詳細は<a href="http://otree.readthedocs.io/en/latest/rounds.html#in-rounds">Passing data between rounds or apps</a>を確認してください．</p>
+
+<h2 id="toc_41">Session</h2>
+
+<h3 id="toc_42">num_participants</h3>
+
+<p>そのセッションの参加者の人数を示しています．</p>
+
+<h3 id="toc_43">config</h3>
+
+<p><a href="http://otree.readthedocs.io/en/latest/admin.html#edit-config">Configure sessions</a>と<a href="http://otree.readthedocs.io/en/latest/treatments.html#session-config-treatments">Choosing which treatment to play</a>を確認してください．</p>
+
+<h3 id="toc_44">vars</h3>
+
+<p><a href="http://otree.readthedocs.io/en/latest/rounds.html#session-vars">session.vars</a>を確認してください．</p>
+
+<h2 id="toc_45">Participant</h2>
+
+<h3 id="toc_46">vars</h3>
+
+<p><a href="http://otree.readthedocs.io/en/latest/rounds.html#vars">participants.vars</a>を確認してください．</p>
+
+<h3 id="toc_47">label</h3>
+
+<p><a href="http://otree.readthedocs.io/en/latest/admin.html#participant-label">participants.labels</a>を確認してください．</p>
+
+<h3 id="toc_48">id_in_session</h3>
+
+<p>セッションにおける実験参加者のIDを示しています．このIDはプレイヤーの<code>id_in_subsession</code>と同じものです．</p>
+
+<h3 id="toc_49">payoff</h3>
+
+<p><a href="http://otree.readthedocs.io/en/latest/currency.html#payoff">payoffs</a>を確認してください．</p>
+
+<h3 id="toc_50">payoff<em>plus</em>participation_fee</h3>
+
+<p><a href="http://otree.readthedocs.io/en/latest/currency.html#payoff">payoffs</a>を確認してください．</p>
+
+<h3 id="toc_51">oTreeコードの実行方法</h3>
+
+<p>メソッド内にないコードは基本的には全てglobalであり，サーバ起動時に一度だけ実行されます．</p>
+
+<p>一部の人々は新しいセッションが実行される度にコードが実行されると勘違いしているようです．例えば，コイントスで表が出るようなランダム確率を発生させたい人は以下のようなコードをmodels.pyに書くかもしれません．</p>
+
+<div><pre><code class="language-none">class Constants(BaseConstants):
+    heads_probability = random.random() # wrong</code></pre></div>
+
+<p>サーバが起動した時にmodels.pyを起動します．そして<code>random.random()</code>を一度だけ実行します．そしてランダムな数字，例えば“0.257291”を評価します．</p>
+
+<div><pre><code class="language-none">class Constants(BaseConstants):
+    heads_probability = 0.257291</code></pre></div>
+
+<p>なぜならば，<code>Constants</code>はglobal変数であり，“0.257291”が全てのセッションにおいて全プレイヤーに共有されます．</p>
+
+<p>同じ理由で，以下のコードも起動しません．</p>
+
+<div><pre><code class="language-none">class Player(BasePlayer):
+
+    heads_probability = models.FloatField(
+        # wrong
+        initial=random.random()
+    )</code></pre></div>
+
+<p>この解決策は，<a href="http://otree.readthedocs.io/en/latest/models.html#creating-session">creating_session</a>のように，メソッドの内部でランダム変数を発生させることです．</p>
+
+
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>
