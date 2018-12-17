@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>public_goods</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">公共財ゲーム</h1>
+
+<p>続いて，単純な公共財ゲーム作成しましょう．公共財ゲームとは，経済学における古典的なゲームの1つです．</p>
+
+<p>ここでは初期保有額が100ポイントであり，3人プレイヤーのゲームであるとします．各プレイヤーは独立して，手持ちのポイントをグループに貢献するのかを決めます．各プレイヤーの貢献額を2倍したものを3人に平等に分配します．</p>
+
+<p>公共財ゲームのすべてのコードは<a href="https://github.com/oTree-org/oTree/tree/master/public_goods_simple">コチラ</a>にあります．</p>
+
+<p>以下の9つのセットアップを行っていきます．</p>
+
+<ul>
+<li>アップグレード</li>
+<li>アプリケーションの作成</li>
+<li>model.pyの定義</li>
+<li>templateの定義</li>
+<li>views.pyの定義</li>
+<li>settings.pyでのsession configの定義</li>
+<li>データベースをリセットして再起動</li>
+<li>サーバを動かしている間の変更</li>
+<li>ボットの作成
+それではやっていきましょう．</li>
+</ul>
+
+<p>アップグレード
+最新バージョンのoTreeを使うために，コマンドラインを開いて，以下のコードを実行しましょう</p>
+
+<div><pre><code class="language-{}">pip3 install -U otree-core
+#再度インストールします．
+
+otree resetdb
+#インストールをした際にはデータベースをリセットしましょう．</code></pre></div>
+
+<h2 id="toc_1">アプリケーションの作成</h2>
+
+<p>cdコマンドを使って，<code>&quot;requirements_base.txt&quot;</code>のある，あなたが作ったoTreeプロジェクトフォルダに移動してください．</p>
+
+<p>このディレクトリの中に，公共財ゲーム用のディレクトリを作ってあげます．</p>
+
+<p><code>otree startapp my_public_goods</code></p>
+
+<p>これによってoTreeプロジェクトフォルダの中に&quot;my<em>public</em>goods&quot;というフォルダができたことを確認してください．</p>
+
+<h2 id="toc_2">model.pyの定義</h2>
+
+<p>&quot;model.py&quot;ファイルを開きます．このファイルにはプレイヤー，グループ，サブセッションなどのゲームに関連するモデルとパラメータなどを定義します．</p>
+
+<p>はじめに，公共財ゲームにあわせて，すべてのプレイヤーがすべてのゲームで同様のパラメータになるようにConstantsクラスを修正します．</p>
+
+<p>1つのグループにつき，3人のプレイヤーが必要です．したがって，&quot;players<em>per</em>group&quot;を3に変更します．oTreeでは自動的にプレイヤーを3人グループに分けてくれます．
+各プレイヤーの初期保有額は100ポイントです．したがって，&quot;endowment&quot;を&quot;c(100)&quot;として定義します．(&quot;c()&quot;は金額を示しています．)
+それぞれの貢献額は2倍にします．したがって，multiplierを2にセットします．
+そうすると，以下のようなコードが用意できます．</p>
+
+<div><pre><code class="language-{}">class Constants(BaseConstants):
+    name_in_url = &#39;my_public_goods&#39;
+    players_per_group = 3
+    num_rounds = 1
+
+    endowment = c(100)
+    multiplier = 2</code></pre></div>
+
+<p>ただし，Pythonは大文字と小文字を区別します．したがって，大文字を使うときは気をつけてください．また，インデントも適切に用いてください．例えばif，for，defなどのコードブロック内にあるとき．4つのスペースをインデントする必要があります．</p>
+
+<p>続いて，このゲームで重要な点であるプレイヤーとグループについて検討します．</p>
+
+<p>ゲームを実施した後，各プレイヤーにはどのようなデータが必要でしょうか？重要なのはどのプレイヤーがいくら貢献したかです．したがって，通貨を示す&quot;contribution&quot;フィールドを定義しましょう．</p>
+
+<div><pre><code class="language-{}">class Player(BasePlayer):
+    contribution = models.CurrencyField(min=0, max=Constants.endowment)</code></pre></div>
+
+<p>各グループについて記録を残すとき，どのようなデータに興味があるのでしょうか？もしかしたら，全てのプレイヤーの貢献額(total contribution)に興味があるかもしれません．そして貢献額に基づいて算出された金額(individual share)が各プレイヤーに分配されます．したがって，これらの2つを定義します．</p>
+
+<div><pre><code class="language-{}">class Group(BaseGroup):
+
+    total_contribution = models.CurrencyField()
+    individual_share = models.CurrencyField()</code></pre></div>
+
+<p>それでは，利得の計算式や，関連する数値を計算します．ここでは&quot;set_payoffs&quot;と呼びましょう．</p>
+
+<div><pre><code class="language-{}">class Group(BaseGroup):
+
+    total_contribution = models.CurrencyField()
+    individual_share = models.CurrencyField()
+
+    def set_payoffs(self):
+        self.total_contribution = sum([p.contribution for p in self.get_players()])
+        self.individual_share = self.total_contribution * Constants.multiplier / Constants.players_per_group
+        for p in self.get_players():
+            p.payoff = Constants.endowment - p.contribution + self.individual_share</code></pre></div>
+
+<h2 id="toc_3">templateの定義</h2>
+
+<p>このゲームでは2つのページを用意します．</p>
+
+<p>ページ1：プレイヤーはいくら貢献するか決定します．
+ページ2：プレイヤーは結果を伝えられます．
+このセクションではゲームを表示するためにHTMLテンプレートを定義します．はじめに，&quot;templates/my<em>public</em>goods/&quot;ディレクトリ内に2つのHTMLファイルを作成しましょう．</p>
+
+<p>1つは&quot;Contribute.html&quot;です．これはゲームの単純な説明と，プレイヤーが貢献額を入力するフォームフィールドを用意します．</p>
+
+<div><pre><code class="language-{}">{% extends &quot;global/Page.html&quot; %}
+{% load staticfiles otree_tags %}
+
+{% block title %} Contribute {% endblock %}
+
+{% block content %}
+
+&lt;p&gt;
+    これは1グループあたり{{ Constants.players_per_group }} 人の公共財ゲームです．,
+    初期保有額は {{ Constants.endowment }}であり，
+    全プレイヤーの貢献額の合計が {{ Constants.multiplier }}倍されて，各プレイヤーに平等に分配されます．
+&lt;/p&gt;
+
+
+{% formfield player.contribution with label=&quot;How much will you contribute?&quot; %}
+
+{% next_button %}
+
+{% endblock %}</code></pre></div>
+
+<p>ちなみに，Pycharmを使って&quot;{%&quot;を打つと，&quot;%}&quot;と移動的に入力されます．そして，その間に何を打つべきかサジェッションが表示されます．</p>
+
+<p>そして，もう1つのテンプレートは&quot;Result.html&quot;です．</p>
+
+<div><pre><code class="language-{}">{% extends &quot;global/Page.html&quot; %}
+{% load staticfiles otree_tags %}
+
+{% block title %} Results {% endblock %}
+
+{% block content %}
+
+&lt;p&gt;
+    あなたの初期保有額は {{ Constants.endowment }}です．
+    その中から {{ player.contribution }}を貢献しました．
+    あなたのグループ全体では {{ group.total_contribution }}が貢献されました．
+    その結果，各個人には{{ group.individual_share }}が分配されます．
+    したがって，あなたの利得は {{ player.payoff }}です．
+&lt;/p&gt;
+
+{% next_button %}
+
+{% endblock %}</code></pre></div>
+
+<h2 id="toc_4">views.pyの定義</h2>
+
+<p>続いて，viewファイルを定義します．これはHTMLテンプレートを表示する方法を示しているものです．</p>
+
+<p>ここでは2つのテンプレートを用意したので，&quot;views.py&quot;の中に2つの&quot;Page&quot;クラスを用意する必要があります．</p>
+
+<p>最初に，&quot;Contribute&quot;を定義します．このページは入力フォームを含んでいるので，&quot;form<em>model&quot;と&quot;form</em>fields&quot;を定義する必要があります．特に，このフォームは各プレイヤーの&quot;contribution&quot;フィールドを含んでいる必要があります．</p>
+
+<div><pre><code class="language-{}">class Contribute(Page):
+
+    form_model = models.Player
+    form_fields = [&#39;contribution&#39;]</code></pre></div>
+
+<p>続いて，&quot;Results&quot;を定義します．このページにはフォームはありません．したがって，何もクラスを定義しません．このような場合は&quot;pass&quot;を使います．</p>
+
+<div><pre><code class="language-{}">class Results(Page):
+    pass</code></pre></div>
+
+<p>これでほとんどできましたが，最後にもう1ページ必要です．プレイヤーが貢献額を決めた後，すぐに結果を知ることはできません．他のプレイヤーが貢献額を決めるのを待つ必要があります．そのために，&quot;WaitPage&quot;という待機画面のページを追加します．</p>
+
+<p>プレイヤーが待機画面にたどり着いた時，他のプレイヤーが待機画面にたどり着くのを待つ必要があります．そして，次ぐのページに進むことになります．</p>
+
+<p>最初に&quot;self.group.set<em>payoffs()&quot;と記入します．なぜならば，先程，利得の計算方法を&quot;set</em>payoffs&quot;として定義しました．そしてその方法は&quot;Group&quot;クラスの中にあります．これが最初に&quot;self.group&quot;と書く理由です．</p>
+
+<div><pre><code class="language-{}">class ResultsWaitPage(WaitPage):
+
+    def after_all_players_arrive(self):
+        self.group.set_payoffs()</code></pre></div>
+
+<p>そして，&quot;page_sequence&quot;でページ遷移の順番を並べ替えます．</p>
+
+<div><pre><code class="language-{}">page_sequence = [
+    Contribute,
+    ResultsWaitPage,
+    Results
+]</code></pre></div>
+
+<h2 id="toc_5">settings.pyでのsession configの定義</h2>
+
+<p>最後に，このプロジェクトのルートディレクトリにある，settings.pyを定義します．SESSION_CONFIGSの中に以下の内容を追記します．</p>
+
+<p>実験室実験では，実験の後に調査で終わるのが慣例です．そして，そのためにいくらを実験参加者に渡すか示す必要があります．そこで，「実験後調査」と「支払情報」のアプリケーションを&quot;app_sequence&quot;(アプリケーション遷移)に追加する必要があります．</p>
+
+<div><pre><code class="language-{}">SESSION_CONFIGS = [
+    {
+        &#39;name&#39;: &#39;my_public_goods&#39;,
+        &#39;display_name&#39;: &quot;My Public Goods (Simple Version)&quot;,
+        &#39;num_demo_participants&#39;: 3,
+        &#39;app_sequence&#39;: [&#39;my_public_goods&#39;, &#39;survey&#39;, &#39;payment_info&#39;],
+    },
+    # other session configs ...
+]</code></pre></div>
+
+<h2 id="toc_6">データベースをリセットして再起動</h2>
+
+<p>コマンドラインに以下の通り入力してデータベースをリセットします．</p>
+
+<div><pre><code class="language-{}">otree resetdb
+otree runserver</code></pre></div>
+
+<p>起動したら，<code>http://127.0.0.1:8000</code>にアクセスしてください．</p>
+
+<h2 id="toc_7">print()を使ったトラブルシューティング</h2>
+
+<p>もしコードが適切に動いていなそうであれば，&quot;print()&quot;を使ってPythonプログラムのデバッグをすることができます．ここでは，printを&quot;set_payoffs&quot;の中に追記します．</p>
+
+<div><pre><code class="language-{}">def set_payoffs(self):
+    self.total_contribution = sum([p.contribution for p in self.get_players()])
+    self.individual_share = self.total_contribution * Constants.multiplier / Constants.players_per_group
+    for p in self.get_players():
+        p.payoff = Constants.endowment - p.contribution + self.individual_share
+        print(&#39;@@@@@@p.payoff is&#39;, p.payoff)</code></pre></div>
+
+<p>アウトプットは&quot;otree runserver&quot;を走らせているコンソールに表示されます．ブラウザには表示されません．</p>
+
+<h2 id="toc_8">サーバを動かしている間の変更</h2>
+
+<p>一度サーバを動かし始めたら，&quot;Contribution.html&quot;，もしくは&quot;Results.html&quot;を変更してみてください．そして，保存をしてからページを読み込み直してください．変更が即座に反映されます．</p>
+
+<h2 id="toc_9">ボットの作成</h2>
+
+<p>最後に，今作った実験をシミュレーションするボットを作成しましょう．ボットを作るとタスクを減らすことができます．なぜならば，ゲームに変更があった際に，しっかりと動くかどうか確認することができるからです．</p>
+
+<p>はじめに，&quot;test.py&quot;に移動して，以下のコードを&quot;PlayerBot&quot;クラスに追記してください．</p>
+
+<div><pre><code class="language-{}">class PlayerBot(Bot):
+
+    def play_round(self):
+        yield (views.Contribute, {&#39;contribution&#39;: c(42)})
+        yield (views.Results)
+このボットは最初に貢献額を決定するページで42ポイントを貢献します．その結果が結果を表示する画面に反映されます．</code></pre></div>
+
+<p>コマンドラインでは，以下のコードを入力しましょう．</p>
+
+<div><pre><code class="language-{}">otree test my_public_goods</code></pre></div>
+
+<p>そして，コマンドラインで実行した結果を確認することができます．ブラウザ上でボットを動かす場合には，&quot;settings.py&quot;に移動して，&quot;&#39;use<em>browser</em>bots&#39;: True&quot;とSESSION CONFIGに入力してください．</p>
+
+<p>こんな感じです．</p>
+
+<div><pre><code class="language-{}">SESSION_CONFIGS = [
+    {
+        &#39;name&#39;: &#39;my_public_goods&#39;,
+        &#39;display_name&#39;: &quot;My Public Goods (Simple Version)&quot;,
+        &#39;num_demo_participants&#39;: 3,
+        &#39;app_sequence&#39;: [&#39;my_public_goods&#39;, &#39;survey&#39;, &#39;payment_info&#39;],
+        &#39;use_browser_bots&#39;: True
+    },
+    # other session configs ...
+]</code></pre></div>
+
+<p>これで新たなセッションを始めた時，自動的に始めることができます．</p>
+
+<p>....長っ！！</p>
+
+<p>でも，この調子で書き進めよう．</p>
+
+<p>今，WordPressで書いているけどこれで良いのかしら？Qiitaとかの方が．．とも思ったりします．．</p>
+
+<p>本家本元のURL（このページを翻訳＋αをしています）：</p>
+
+<p>http://otree.readthedocs.io/en/latest/tutorial/part1.html</p>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>simple_survey</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">oTreeでのSurveyの作り方：</h1>
+
+<p>すみません，仕事が慌ただしく．．．</p>
+
+<p>oTreeの強みはオンライン上でインタラクションのある経済ゲーム実験を実施できる，という点にあるのですが，それだけではありません．</p>
+
+<p>単純にインタラクションのない個人の意思決定を調査する際にも使えます．</p>
+
+<p>ここでは，インタラクションのある経済ゲーム実験を作るための基礎，という側面も含めてSurveyを作ってみましょう．</p>
+
+<p>アプリケーションの作成</p>
+
+<p>最初にアプリケーションを作ります．</p>
+
+<p>はじめに，&quot;requirements_base.txt&quot;があるディレクトリに移動します．</p>
+
+<p>移動する際にはoTreeディレクトリの中に入る必要があるので，</p>
+
+<p><code>cd oTree</code>
+で移動しましょう．</p>
+
+<p>このディレクトリの中に，調査アプリ用のディレクトリを作ってあげます．</p>
+
+<p><code>otree startapp my_survey</code></p>
+
+<p>これによって調査用アプリを作ることができます．</p>
+
+<p>※ただし，普段私は手抜きなので，他のアプリをコピペして作り始めることが多いです．ただ，幾つか落とし穴はあるので，気をつけないといけないかもしれません．</p>
+
+<p>こうすると，「my_survey」というフォルダが出来上がります．</p>
+
+<p>ここから，</p>
+
+<p>models.py
+template
+views.py
+settings.py
+の4つをセットアップしていきます．</p>
+
+<h2 id="toc_1">models.pyを定義する</h2>
+
+<p>models.pyを開き，class Player(BasePlayer):をスクロールして探してください．ここに各プレイヤー（実験参加者）について，データベースに保存するフィールドを作成します．ここでは以下の2つのフィールドを保存します．</p>
+
+<p>name：これはcharfield，文字列を保存します．
+age：ここでは正の整数を保存します．</p>
+
+<div><pre><code class="language-{}">class Player(BasePlayer):
+    name = models.CharField()
+    age = models.PositiveIntegerField()</code></pre></div>
+
+<p>templateを定義する
+この調査は2ページに渡るものとします：</p>
+
+<p>Page 1：プレイヤーが名前と年齢を入力します．
+Page 2：プレイヤーが前のページで入力したデータを確認します．
+このセクションでは，実験参加者は実験者に見えるHTMLテンプレートを定義します．</p>
+
+<p>この2つのHTMLファイルをtemplates/my<em>simple</em>survey/の中に作成します．</p>
+
+<p>最初のページの名前をMyPage.htmlとします．そして，以下の内容をファイルの中に記入します．</p>
+
+<div><pre><code class="language-{}">{% extends &quot;global/Page.html&quot; %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Enter your information
+{% endblock %}
+
+{% block content %}
+
+    {% formfield player.name with label=&quot;Enter your name&quot; %}
+
+    {% formfield player.age with label=&quot;Enter your age&quot; %}
+
+    {% next_button %}
+
+{% endblock %}
+</code></pre></div>
+
+<p>そして，2つ目のファイルはResult.htmlという名前にします．</p>
+
+<div><pre><code class="language-{}">{% extends &quot;global/Page.html&quot; %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+
+    &lt;p&gt;Your name is {{ player.name }} and your age is {{ player.age }}.&lt;/p&gt;
+
+    {% next_button %}
+{% endblock %}</code></pre></div>
+
+<h2 id="toc_2">views.pyを定義する</h2>
+
+<p>続いて，viewファイルを定義します．これはHTMLテンプレートを表示する方法を示しているものです．</p>
+
+<p>先程，2つのテンプレートを容易いたしました．そのために2つのPageクラスをviews.pyの中に定義する必要があります．定義する際の名前は2つのHTMLテンプレート(MyPageとResults)に一致させる必要があります．</p>
+
+<p>最初に，MyPageを定義しましょう．このページはフォームを含んでいます．したがって，form<em>modelとform</em>fieldsを定義する必要があります．</p>
+
+<p>特に，このフォームはnameフィールドとageフィールドをプレイヤーに準備する必要があります．</p>
+
+<div><pre><code class="language-{}">class MyPage(Page):
+    form_model = models.Player
+    form_fields = [&#39;name&#39;, &#39;age&#39;]</code></pre></div>
+
+<p>続いて，Resultsページを定義します．このページはフォームを含んでいませんので，ただパスする宣言をするだけで構いません．</p>
+
+<div><pre><code class="language-{}">class Results(Page):
+    pass</code></pre></div>
+
+<p>もし，views.pyの中に既にWaitPageがあるならば，そのページは消してしまってください．なぜならば，WaitPageは複数人プレイヤーのゲームや，より複雑なゲームにおいて必要とされるからです．</p>
+
+<p>その後，page_sequenceを設定します．これにより，MyPageの後にResultsを表示できるようにします．これについては，views.pyの中に定義する必要があります．</p>
+
+<p>したがって，最終的にviews.pyはこのような内容になります．</p>
+
+<div><pre><code class="language-{}">from otree.api import Currency as c, currency_range
+from . import models
+from ._builtin import Page, WaitPage
+from .models import Constants
+
+
+class MyPage(Page):
+    form_model = models.Player
+    form_fields = [&#39;name&#39;, &#39;age&#39;]
+
+
+class Results(Page):
+    pass
+
+
+page_sequence = [
+    MyPage,
+    Results
+]</code></pre></div>
+
+<h2 id="toc_3">settings.pyを定義する</h2>
+
+<p>最後に，このプロジェクトのルートディレクトリにある，settings.pyを定義します．SESSION_CONFIGSの中に以下の内容を追記します．</p>
+
+<div><pre><code class="language-{}">SESSION_CONFIGS = [
+    {
+        &#39;name&#39;: &#39;my_simple_survey&#39;,
+        &#39;display_name&#39;: &quot;調査を作ってみた&quot;,
+        &#39;num_demo_participants&#39;: 1,
+        &#39;app_sequence&#39;: [&#39;my_simple_survey&#39;],
+    },
+    # other session configs go here ...
+]</code></pre></div>
+
+<p>データベースをセットして起動する
+<code>{}
+otree resetdb
+otree runserver
+</code></p>
+
+<p>起動したら，<code>http://127.0.0.1:8000</code>にアクセスしてください．</p>
+
+<p>エラーの修正</p>
+
+<p>もしエラーがあれば．コマンドラインに&quot;traceback&quot;（エラーメッセージ）が表示されます．</p>
+
+<div><pre><code class="language-{}">C:\oTree\chris&gt; otree resetdb
+Traceback (most recent call last):
+  File &quot;C:\oTree\chris\manage.py&quot;, line 10, in &lt;module&gt;
+    execute_from_command_line(sys.argv, script_file=__file__)
+  File &quot;c:\otree\core\otree\management\cli.py&quot;, line 170, in execute_from_command_line
+    utility.execute()
+  File &quot;C:\oTree\venv\lib\site-packages\django\core\management\__init__.py&quot;, line 328, in execute
+    django.setup()
+  File &quot;C:\oTree\venv\lib\site-packages\django\__init__.py&quot;, line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File &quot;C:\oTree\venv\lib\site-packages\django\apps\registry.py&quot;, line 108, in populate
+    app_config.import_models(all_models)
+  File &quot;C:\oTree\venv\lib\site-packages\django\apps\config.py&quot;, line 198, in import_models
+    self.models_module = import_module(models_module_name)
+  File &quot;C:\Python27\Lib\importlib\__init__.py&quot;, line 37, in import_module
+    __import__(name)
+  File &quot;C:\oTree\chris\public_goods_simple\models.py&quot;, line 40
+    self.total_contribution = sum([p.contribution for p in self.get_players()])
+       ^
+IndentationError: expected an indented block</code></pre></div>
+
+<p>こんな画面が出てきたときに，最初にすべきことは「最後の一文」に注目しましょう．</p>
+
+<p>ここでは<code>&quot;&quot;C:\oTree\chris\public_goods_simple\models.py&quot;, line 40&quot;</code>に何らかのエラーが生じていることを示しています．そして，tracebackが指摘しているエラーを修正してください．</p>
+
+<p><code>&quot;IndentationError: expected an indented block&quot;</code>は「インデントが必要な場所に入力されていない」ということを示しています．PyCharmのようなPythonエディタはエラーが生じた場所に赤線などが入るのでエラーを見つけやすくなっています．エラーを直したら，再度走らせてみましょう．</p>
+
+<p>時折，tracebackの最後の行に必要なコードが入っていないことを指摘してくれる場合があります．</p>
+
+<p>例えば，以下のtracebackでは最後の行で&quot;/site-packages/easymoney.py&quot;について言及されています．これは，作成したアプリケーションではなく，Pythonの外部パッケージにエラーが生じていることを意味しています．</p>
+
+<div><pre><code class="language-{}">Traceback:
+File &quot;/usr/local/lib/python3.5/site-packages/django/core/handlers/base.py&quot; in get_response
+  132.                     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+File &quot;/usr/local/lib/python3.5/site-packages/django/views/generic/base.py&quot; in view
+  71.             return self.dispatch(request, *args, **kwargs)
+File &quot;/usr/local/lib/python3.5/site-packages/django/utils/decorators.py&quot; in _wrapper
+  34.             return bound_func(*args, **kwargs)
+File &quot;/usr/local/lib/python3.5/site-packages/django/views/decorators/cache.py&quot; in _wrapped_view_func
+  57.         response = view_func(request, *args, **kwargs)
+File &quot;/usr/local/lib/python3.5/site-packages/django/utils/decorators.py&quot; in bound_func
+  30.                 return func.__get__(self, type(self))(*args2, **kwargs2)
+File &quot;/usr/local/lib/python3.5/site-packages/django/utils/decorators.py&quot; in _wrapper
+  34.             return bound_func(*args, **kwargs)
+File &quot;/usr/local/lib/python3.5/site-packages/django/views/decorators/cache.py&quot; in _cache_controlled
+  43.             response = viewfunc(request, *args, **kw)
+File &quot;/usr/local/lib/python3.5/site-packages/django/utils/decorators.py&quot; in bound_func
+  30.                 return func.__get__(self, type(self))(*args2, **kwargs2)
+File &quot;/usr/local/lib/python3.5/site-packages/otree/views/abstract.py&quot; in dispatch
+  315.                 request, *args, **kwargs)
+File &quot;/usr/local/lib/python3.5/site-packages/django/views/generic/base.py&quot; in dispatch
+  89.         return handler(request, *args, **kwargs)
+File &quot;/usr/local/lib/python3.5/site-packages/otree/views/abstract.py&quot; in get
+  814.         return super(FormPageMixin, self).get(request, *args, **kwargs)
+File &quot;/usr/local/lib/python3.5/site-packages/vanilla/model_views.py&quot; in get
+  294.         context = self.get_context_data(form=form)
+File &quot;/usr/local/lib/python3.5/site-packages/otree/views/abstract.py&quot; in get_context_data
+  193.         vars_for_template = self.resolve_vars_for_template()
+File &quot;/usr/local/lib/python3.5/site-packages/otree/views/abstract.py&quot; in resolve_vars_for_template
+  212.         context.update(self.vars_for_template() or {})
+File &quot;/Users/chris/oTree/public_goods/views.py&quot; in vars_for_template
+  108.             &#39;total_payoff&#39;: self.player.payoff + Constants.fixed_pay}
+File &quot;/usr/local/lib/python3.5/site-packages/easymoney.py&quot; in &lt;lambda&gt;
+  36.     return lambda self, other, context=None: self.__class__(method(self, _to_decimal(other)))
+File &quot;/usr/local/lib/python3.5/site-packages/easymoney.py&quot; in _to_decimal
+  24.         return Decimal(amount)
+
+Exception Type: TypeError at /p/j0p7dxqo/public_goods/ResultsFinal/8/
+Exception Value: conversion from NoneType to Decimal is not supported
+</code></pre></div>
+
+<p>これにハマるとしんどい．．．．</p>
+
+<p>このような場合，外部のパッケージではなく，自分で作成したコードに対する言及がないかどうかを調べてみます．</p>
+
+<p>探してみると，自身で作成したパッケージの一部である&quot;/Users/chris/oTree/public_goods/views.py&quot;に問題があることが推測されます．バグは108行目にいることが示唆されます．</p>
+
+<p>・・・頻度を上げたいけど，学期が始まるとなかなか手が回りません．．．</p>
+
+<p>頑張ります．</p>
+
+<p>本家本元のURL（このページを翻訳＋αをしています）：</p>
+
+<p>http://otree.readthedocs.io/en/latest/tutorial/part0.html</p>
+
+
+
+
+</body>
+
+</html>
